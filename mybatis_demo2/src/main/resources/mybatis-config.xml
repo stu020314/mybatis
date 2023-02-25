@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"></properties>
+
+    <!--设置别名，不区分大小写，默认别名是类名-->
+    <!--type设置别名的类型
+        alias设置别名
+    -->
+    <typeAliases>
+        <!--<typeAlias type="com.chenlun.mybatis.pojo.User" alias="User"></typeAlias>-->
+        <!--package以包为单位创建别名-->
+        <package name="com.chenlun.mybatis.pojo"></package>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"></property>
+                <property name="url" value="${jdbc.url}"></property>
+                <property name="username" value="${jdbc.username}"></property>
+                <property name="password" value="${jdbc.password}"></property>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--引入映射文件-->
+    <mappers>
+
+        <!--
+            用包为单位映入映射文件
+            mapper接口所在的包名字要和映射文件所在的包名字一致
+            mapper接口要和映射接口名字一致
+        -->
+        <package name="com.chenlun.mybatis.mapper"></package>
+    </mappers>
+</configuration>
